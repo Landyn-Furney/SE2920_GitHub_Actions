@@ -1,0 +1,15 @@
+name: Issue Comment Logger
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  print-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print issue/PR number and the comment text
+        run: |
+          echo "Issue/PR number: ${{ github.event.issue.number }}"
+          echo "Comment body:"
+          echo "${{ github.event.comment.body }}"
